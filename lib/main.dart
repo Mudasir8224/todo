@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/add_notes.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,14 +28,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var _textField = new Container(
@@ -113,8 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
         height: 70.0,
         width: 70.0,
         child: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
+          onPressed: () {
+            Navigator.push(
+                context,
+              MaterialPageRoute(builder: (context) => AddNotes()),
+              );
+          },
           child: Icon(
             Icons.add,
             size: 40.0,
