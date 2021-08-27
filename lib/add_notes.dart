@@ -6,27 +6,15 @@ class AddNotes extends StatefulWidget {
 }
 
 class _AddNotesState extends State<AddNotes> {
-  var _textFieldTitle = new TextField(
-    decoration: InputDecoration(
-        hintText: 'Title',
-        fillColor: Colors.transparent,
-        filled: true,
-        border: InputBorder.none,
-        contentPadding:
-            EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0)),
-    style: TextStyle(fontSize: 30.0, height: 2.0, color: Colors.black),
-  );
+  final titleController = TextEditingController();
+  final contentController = TextEditingController();
 
-  var _textFieldContent = new TextField(
-    decoration: InputDecoration(
-        hintText: 'Start typing',
-        fillColor: Colors.transparent,
-        filled: true,
-        border: InputBorder.none,
-        contentPadding:
-            EdgeInsets.only(left: 20.0, right: 20.0)),
-    style: TextStyle(fontSize: 20.0, height: 2.0, color: Colors.black),
-  );
+  @override
+  void dispose() {
+    titleController.dispose();
+    contentController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +30,28 @@ class _AddNotesState extends State<AddNotes> {
         ],
       ),
       body: Column(
-        children: [_textFieldTitle, _textFieldContent],
+        children: [
+          TextField(
+            controller: titleController,
+            decoration: InputDecoration(
+              hintText: 'Title',
+              fillColor: Colors.transparent,
+              filled: true,
+              border: InputBorder.none,
+                contentPadding: EdgeInsets.only(left: 20.0, right: 20.0,top: 20.0)
+            ),
+            style: TextStyle(fontSize: 30.0, color: Colors.black),
+          ),
+          TextField(
+            decoration: InputDecoration(
+                hintText: 'Start typing',
+                fillColor: Colors.transparent,
+                filled: true,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(left: 20.0, right: 20.0)),
+            style: TextStyle(fontSize: 20.0, color: Colors.black),
+          ),
+        ],
       ),
     );
   }
