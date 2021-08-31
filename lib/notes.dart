@@ -1,11 +1,11 @@
-class Notes{
-  final int id;
+class Notes {
+  late final int id;
   final String title;
   final String content;
   final String time;
 
   Notes({
-      required this.id,
+    required this.id,
     required this.title,
     required this.content,
     required this.time,
@@ -28,5 +28,4 @@ class Notes{
   String toString() {
     return 'Notes{id: $id, title: $title, content: $content, time: $time}';
   }
-
 }
