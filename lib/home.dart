@@ -58,34 +58,38 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 100.0,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 20.0, right: 20.0, top: 12.0, bottom: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            snapshot.data![index].title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18.0),
-                          ),
-                          Text(snapshot.data![index].content,
+                return Padding(
+                  padding:
+                      const EdgeInsets.all(12.0),
+                  child: Container(
+                    height: 100.0,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20.0, top: 12.0, bottom: 12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              snapshot.data![index].title,
                               style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 15.0)),
-                          Text(snapshot.data![index].time,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12.0)),
-                        ],
+                                  fontWeight: FontWeight.bold, fontSize: 18.0),
+                            ),
+                            Text(snapshot.data![index].content,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 15.0)),
+                            Text(snapshot.data![index].time,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12.0)),
+                          ],
+                        ),
                       ),
                     ),
                   ),

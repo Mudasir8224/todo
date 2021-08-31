@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:todo/home.dart';
 import 'package:todo/notes.dart';
 import 'package:todo/notes_db.dart';
 
@@ -22,20 +24,34 @@ class _AddNotesState extends State<AddNotes> {
 
   @override
   Widget build(BuildContext context) {
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+    String time = dateFormat.format(DateTime.now());
+
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        leading: BackButton(color: Colors.white),
+        leading: BackButton(
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+          },
+            color: Colors.white),
         actions: [
           IconButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   NotesDatabase().insertNote(Notes(
-                      id: null, title: titleController.text, content: contentController.text, time: '2: pm'),
+                      id: null, title: titleController.text, content: contentController.text, time:time),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
+                  );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
                   );
                 }
               },
