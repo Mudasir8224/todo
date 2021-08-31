@@ -32,7 +32,7 @@ class _AddNotesState extends State<AddNotes> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   NotesDatabase().insertNote(Notes(
-                      id: 1, title: titleController.text, content: contentController.text, time: '2: pm'),
+                      id: null, title: titleController.text, content: contentController.text, time: '2: pm'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),

@@ -1,5 +1,5 @@
 class Notes {
-  late final int id;
+  late final int? id;
   final String title;
   final String content;
   final String time;
